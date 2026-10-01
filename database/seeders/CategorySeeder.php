@@ -1,0 +1,33 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Category;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
+
+class CategorySeeder extends Seeder
+{
+    public function run(): void
+    {
+        $categories = [
+            'Joran Pancing',
+            'Reel Pancing',
+            'Umpan Buatan',
+            'Pancing & Kili-kili',
+            'Pakaian & Aksesori',
+            'Sepatu',
+            'Tas & Box',
+            'Perlengkapan Lain',
+        ];
+
+        foreach ($categories as $index => $name) {
+            Category::create([
+                'name' => $name,
+                'slug' => Str::slug($name),
+                'sort_order' => $index + 1,
+                'is_active' => true,
+            ]);
+        }
+    }
+}
